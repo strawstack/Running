@@ -1,6 +1,13 @@
 @value _cell_size: 200px;
-@value _large_font: 2rem;
-@value _med_font: 1.2rem;
+@value _large_font: 1.9rem;
+@value _med_font: 1rem;
+@value _letter_size: 65px;
+
+.VertSpan {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 html, body {
     height: 100%;
@@ -24,16 +31,23 @@ html, body {
     grid-template-rows: repeat(auto-fill, _cell_size);
 }
 .DateBox {
-    grid-column: span 1;
+    composes: VertSpan;
+    font-size: _med_font;
 }
-.SpanTwo {
+.TimeBox {
+    composes: VertSpan;
+    font-size: _med_font;
+}
+.NameDistSpanTwo, .DateTimeSpanTwo {
     grid-column: span 2;
+    composes: VertSpan;
+}
+.NameDistSpanTwo>div:nth-child(2) {
+    font-size: _med_font;
 }
 .NameTimeDistSpanThree {
     grid-column: span 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    composes: VertSpan;
 }
 .Term {
     display: flex;
@@ -46,8 +60,10 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: _letter_size;
+    height: _letter_size;
 }
-.DateDistance {
+.SmallTerm {
     display: flex;
     justify-content: space-between;
     font-size: _med_font;
@@ -55,4 +71,8 @@ html, body {
 .DayNumber {
     display: flex;
     justify-content: flex-start;
+}
+.DistRow {
+    display: flex;
+    justify-content: center;
 }

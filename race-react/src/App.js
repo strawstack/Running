@@ -21,6 +21,50 @@ const runForTheToad = {
     distance: "50KM",
     time: "03:59:16"
 };
+const blackfoot = {
+    name: ["BLACKFOOT", "ULTRA"],
+    date: "30 MAY 2015",
+    distance: "100KM",
+    time: "09:23:48"
+};
+
+function stringToTerm(lst, spaceAroundFirstLine) {
+    let terms = [];
+    for (let i=0; i < lst.length; i++) {
+        let temp = [];
+        let term = lst[i];
+        for (let j=0; j < term.length; j++) {
+            temp.push(
+                <div
+                key={j}
+                className={styles.Letter}>
+                    {term[j]}
+                </div>
+            );
+        }
+        let centerClass = "";
+        if (spaceAroundFirstLine && i === 0) {
+            centerClass = styles.SpaceAround;
+        }
+        terms.push(
+            <div
+            key={i}
+            className={`${styles.Term} ${centerClass}`}
+            >{temp}</div>);
+    }
+    return terms;
+}
+
+function stringToSmallTerm(str) {
+    let letters = str.split("").map((e, i) => {
+        return (
+            <div
+                key={i}
+                className={styles.Letter}>{e}</div>
+        );
+    });
+    return <div className={styles.SmallTerm}>{letters}</div>;
+}
 
 class DateBox extends React.Component {
     constructor(props) {
@@ -28,37 +72,30 @@ class DateBox extends React.Component {
       this.state = { counter: 0 };
     }
     render() {
-        let date_split = this.props.date.split(" ");
-        let date = [];
-        for (let i=0; i < date_split.length; i++) {
-            let term = date_split[i];
-            let temp = [];
-            for (let j=0; j < term.length; j++) {
-                temp.push(
-                    <div
-                        key={j}
-                        className={styles.Letter}>
-                        {term[j]}
-                    </div>
-                );
-            }
-            let className = styles.Term;
-            if (i == 0) {
-                className = `${styles.Term} ${styles.SpaceAround}`;
-            }
-
-            date.push(
-                <div
-                    key={i}
-                    className={className}>
-                    {temp}
-                </div>
-            );
-        }
-
+        let date = stringToTerm(this.props.date.split(" "), true);
         return (
             <div className={styles.DateBox}>
                 {date}
+            </div>
+        );
+    }
+}
+
+class TimeBox extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { counter: 0 };
+    }
+    render() {
+        let _time = this.props.time.split(":");
+        let hrs = stringToSmallTerm(`${_time[0]}hrs`);
+        let min = stringToSmallTerm(`${_time[1]}min`);
+        let sec = stringToSmallTerm(`${_time[2]}sec`);
+        return (
+            <div className={styles.TimeBox}>
+                {hrs}
+                {min}
+                {sec}
             </div>
         );
     }
@@ -70,8 +107,14 @@ class NameDistSpanTwo extends React.Component {
       this.state = { counter: 0 };
     }
     render() {
+        let name = stringToTerm(this.props.name);
+        let dist = stringToTerm([this.props.distance], true);
         return (
-            <div></div>
+            <div className={styles.NameDistSpanTwo}>
+                {name[0]}
+                {dist}
+                {name[1]}
+            </div>
         );
     }
 }
@@ -82,8 +125,17 @@ class DateTimeSpanTwo extends React.Component {
       this.state = { counter: 0 };
     }
     render() {
+
+        let date = stringToSmallTerm(this.props.date);
+        let raceType = stringToSmallTerm("STAGE RAGE");
+        let time = stringToSmallTerm(this.props.time);
+
         return (
-            <div></div>
+            <div className={styles.DateTimeSpanTwo}>
+                {date}
+                {raceType}
+                {time}
+            </div>
         );
     }
 }
@@ -96,39 +148,8 @@ class NameTimeDistSpanThree extends React.Component {
     render() {
 
         // For each term in the race title
-        let title = [];
-        for (let i=0; i < this.props.name.length; i++) {
-
-            // For each letter
-            let temp = [];
-            let term = this.props.name[i];
-            for (let j=0; j < term.length; j++) {
-                temp.push(
-                    <div
-                    key={j}
-                    className={styles.Letter}>
-                        {term[j]}
-                    </div>
-                );
-            }
-
-            title.push(
-                <div
-                key={i}
-                className={styles.Term}
-                >{temp}</div>);
-        }
-
-        // Process date + distance
-        let _time_dist = `${this.props.time}  ${this.props.distance}`;
-        let letters = _time_dist.split("").map((e, i) => {
-            return (
-                <div
-                    key={i}
-                    className={styles.Letter}>{e}</div>
-            );
-        });
-        let time_dist = <div className={styles.DateDistance}>{letters}</div>;
+        let title = stringToTerm(this.props.name);
+        let time_dist = stringToSmallTerm(`${this.props.time} ${this.props.distance}`);
 
         return (
             <div className={styles.NameTimeDistSpanThree}>
@@ -154,7 +175,7 @@ function App() {
             />
             <NameDistSpanTwo
                 name={grandTwoGrand.name}
-                dist={grandTwoGrand.distance}
+                distance={grandTwoGrand.distance}
             />
             <DateBox
                 date={runForTheToad.date}
@@ -162,6 +183,24 @@ function App() {
             <DateTimeSpanTwo
                 date={grandTwoGrand.date}
                 time={grandTwoGrand.time}
+            />
+            <NameDistSpanTwo
+                name={runForTheToad.name}
+                distance={runForTheToad.distance}
+            />
+            <DateBox
+                date={blackfoot.date}
+            />
+            <TimeBox
+                time={runForTheToad.time}
+            />
+            <NameDistSpanTwo
+                name={blackfoot.name}
+                distance={blackfoot.distance}
+            />
+            <div></div>
+            <TimeBox
+                time={blackfoot.time}
             />
         </div>
     </div>
