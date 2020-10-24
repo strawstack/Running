@@ -1,0 +1,58 @@
+@value _cell_size: 200px;
+@value _large_font: 2rem;
+@value _med_font: 1.2rem;
+
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-weight: bold;
+    font-size: _large_font;
+}
+.App {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(0px, 600px) 1fr;
+    grid-template-rows: 1fr;
+}
+.ContentColumn {
+    height: 100%;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: repeat(3, _cell_size);
+    grid-template-rows: repeat(auto-fill, _cell_size);
+}
+.DateBox {
+    grid-column: span 1;
+}
+.SpanTwo {
+    grid-column: span 2;
+}
+.NameTimeDistSpanThree {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.Term {
+    display: flex;
+    justify-content: space-between;
+}
+.Term.SpaceAround {
+    justify-content: space-around;
+}
+.Letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DateDistance {
+    display: flex;
+    justify-content: space-between;
+    font-size: _med_font;
+}
+.DayNumber {
+    display: flex;
+    justify-content: flex-start;
+}
