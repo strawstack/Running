@@ -19,33 +19,33 @@ Date: 30 May 2015
 Distance: 100km
 Time: 9:23:48
 
-x Race: Dragon's Back Race
+Race: Dragon's Back Race
 Date: 22 Jun 2015
 Distance: 52km (3800m), 58km (3600m), 71km (3500m)
 Time: 19:37:10, 21:51:20, 22:44:04
 
-x Race: Al Andalus Ultimate Trail
+Race: Al Andalus Ultimate Trail
 Date: 6 Jul 2015
 Distance: 250km
 Time: 20:32:12
 
-x Race: Blackfoot Ultra
+Race: Blackfoot Ultra
 Date: 28 May 2016
 Distance: 100km
 Time: 10:58:00
 
-x Race: Canadian Death Race
+Race: Canadian Death Race
 Date: 30 Jul 2016
 Distance: 125km
 Time: 16:22:59
 
-x Race: Bad Beaver
+Race: Bad Beaver
 Date: 01 AUG 2017
 Distance: 150KM
 Stages: 3
 Time: 19:43:00
 
-x Race: Midnight Moose
+Race: Midnight Moose
 Date: 25 SEPT 2018
 Distance: 100KM
 Time: 17:07:00

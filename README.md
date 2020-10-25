@@ -5,7 +5,9 @@ List of races displayed in minimal text-based visual manner
 # ToDo
 
 - [x] Create function [string] -> [Term[Letters]]
-- [ ] 
+
+- [ ] Enter remaining race data
+- [ ] Use components to layout races
 
 # Design
 
