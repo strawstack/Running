@@ -305,8 +305,8 @@ function App() {
                 time={blackfootUltra2.time}
                 colorClass={c1}
             />
-            <TimeBox
-                time={blackfootUltra2.time}
+            <DateBox
+                date={blackfootUltra2.date}
                 colorClass={c1}
             />
             <NameDistSpanTwo
